@@ -55,6 +55,10 @@ namespace BouncingBalls
 			foreach (var ball in Balls)
 			{
 				ball.Move();
+				foreach (var box in Boxes)
+				{
+					box.IsInside(ball);
+				}
 			}
 
 			//Remove balls out of the scene
