@@ -17,9 +17,11 @@ namespace BouncingBalls
 
 		private readonly int NBalls = 45;
 		private readonly int NBoxes = 2;
+		private readonly int NLines= 4;
 
 		private HashSet<Ball> Balls = new HashSet<Ball>();
 		private HashSet<Box> Boxes = new HashSet<Box>();
+		private HashSet<Line> Lines = new HashSet<Line>();
 
 		// Update the ball's position, bouncing if necessary.
 		override protected void tmrMoveBall_Tick(object sender, EventArgs e)
@@ -43,6 +45,41 @@ namespace BouncingBalls
                 Boxes.Add(new Box(C, width, height,1));
             }
 
+			//Adds Green Line1
+			if (Lines.Count < NLines)
+			{
+				int length = 300;
+				PointF C = new PointF(135, 70);
+
+				Lines.Add(new Line(C, length, 2));
+			}
+
+            //Adds Green Line2
+            if (Lines.Count < NLines)
+            {
+                int length = 250;
+                PointF C = new PointF(260, 490);
+
+                Lines.Add(new Line(C, length, 2));
+            }
+
+            //Adds Yellow Line1
+            if (Lines.Count < NLines)
+            {
+                int length = 210;
+                PointF C = new PointF(70, 145);
+
+                Lines.Add(new Line(C, length, 3));
+            }
+
+            //Adds Yellow Line2
+            if (Lines.Count < NLines)
+            {
+                int length = 200;
+                PointF C = new PointF(530, 220);
+
+                Lines.Add(new Line(C, length, 3));
+            }
 
             //Add one ball if they are less than NBalls
             if (Balls.Count < NBalls && rnd.Next(20) == 0)
@@ -58,6 +95,10 @@ namespace BouncingBalls
 				foreach (var box in Boxes)
 				{
 					box.IsInside(ball);
+				}
+				foreach (var line in Lines)
+				{
+					line.IsBeside(ball);
 				}
 			}
 
@@ -83,6 +124,10 @@ namespace BouncingBalls
 			foreach (var box in Boxes)
 			{
 				box.Draw(e.Graphics);
+			}
+			foreach (var line in Lines)
+			{
+				line.Draw(e.Graphics);
 			}
 
 		}
