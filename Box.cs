@@ -36,7 +36,7 @@ namespace Bouncing_Balls
                     ball.Speed.Y += ball.Speed.Y * 0.02f;
                 }
                 //if the box is blue
-                else
+                if (color == 1)
                 {
                     //decrease speed 1%
                     ball.Speed.X -= ball.Speed.X * 0.01f;

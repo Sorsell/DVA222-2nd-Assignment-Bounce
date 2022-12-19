@@ -54,6 +54,7 @@
     <Compile Include="Engine.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Lines.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Shape.cs" />
     <Compile Include="Vector2D.cs" />
